@@ -3,19 +3,27 @@ import React from "react";
 
 export const Header: React.FC = () => {
   return (
-    <AppBar position="static" sx={{ bgcolor: "#cbcbcb" }}>
+    <AppBar position="static" sx={{ bgcolor: "#FFD700" }}>
       <Toolbar>
-        <Box sx={{ flexGrow: 1, display: "flex", justifyContent: "center" }}>
+        <Box
+          sx={{
+            flexGrow: 1,
+            display: "flex",
+            justifyContent: "center",
+            paddingY: 4,
+          }}
+        >
           <Typography
-            variant="h4"
+            variant="h3"
             component="div"
             sx={{
+              color: "#000",
               fontWeight: "bold",
               textTransform: "uppercase",
               letterSpacing: 4,
             }}
           >
-            Starship-People Competition
+            STAR WARS
           </Typography>
         </Box>
       </Toolbar>

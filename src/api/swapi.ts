@@ -13,7 +13,7 @@ const fetchSWData = async <T>(resource: string, id: number): Promise<T> => {
     throw new Error("Base URL for SWAPI is not defined.");
   }
 
-  const url = `${baseURL}${resource}/${id}/`;
+  const url = `${baseURL}${resource}${id}/`;
 
   const response = await fetch(url);
 

@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { isPerson } from "../tools/isPerson";
 import { isStarship } from "../tools/isStarship";
 import { GameType } from "../types/GameType";
@@ -45,12 +46,55 @@ const comparePlayers = (
   return null;
 };
 
+const SCORE_STORAGE_KEY = "sw_game_scores";
+
+const getStoredScores = () => {
+  const savedScores = localStorage.getItem(SCORE_STORAGE_KEY);
+  return savedScores ? JSON.parse(savedScores) : { playerOne: 0, playerTwo: 0 };
+};
+
+const saveScores = (scores: { playerOne: number; playerTwo: number }) => {
+  localStorage.setItem(SCORE_STORAGE_KEY, JSON.stringify(scores));
+};
+
+interface UseResultReturnType {
+  winner: Winner | null;
+  scores: { playerOne: number; playerTwo: number };
+  resetScores: VoidFunction;
+  calculateScores: VoidFunction;
+}
+
 export const useResults = (
   playerOne: PlayerData,
   playerTwo: PlayerData,
   gameType: GameType
-) => {
+): UseResultReturnType => {
+  const [scores, setScores] = useState(getStoredScores());
+
+  const calculateScores = () => {
+    console.log(playerOne, playerTwo);
+    const winner = comparePlayers(playerOne, playerTwo, gameType);
+
+    if (winner) {
+      const updatedScores = { ...scores };
+
+      updatedScores[winner] += 1;
+
+      setScores(updatedScores);
+      saveScores(updatedScores);
+    }
+  };
+
+  const resetScores = () => {
+    const reset = { playerOne: 0, playerTwo: 0 };
+    setScores(reset);
+    saveScores(reset);
+  };
+
   return {
     winner: comparePlayers(playerOne, playerTwo, gameType),
+    scores,
+    resetScores,
+    calculateScores,
   };
 };
