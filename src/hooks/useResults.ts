@@ -14,7 +14,6 @@ const comparePeople = (playerOne: Person, playerTwo: Person): Winner => {
   if (playerOneMass > playerTwoMass) return "playerOne";
   if (playerTwoMass > playerOneMass) return "playerTwo";
 
-  console.log("123");
   return "draw";
 };
 

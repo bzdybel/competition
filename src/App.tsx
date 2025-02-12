@@ -1,4 +1,4 @@
-import { Box } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { GameArea } from "./components/GameArea";
 import { Header } from "./components/Header";
@@ -50,42 +50,57 @@ const App: React.FC = () => {
   return (
     <Box sx={{ display: "flex", height: "100vh", flexDirection: "column" }}>
       <Header />
-      <Box sx={{ display: "flex", flexGrow: 1 }}>
-        <Player
-          isLoading={isLoading}
-          type="red"
-          playerData={playerOne}
-          isWinner={winner === "playerOne"}
-          scores={scores.playerOne}
-        />
+      {error ? (
+        <Typography
+          sx={{ display: "flex", width: "100%", justifyContent: "center" }}
+          color="error"
+        >
+          An error occured
+        </Typography>
+      ) : (
         <Box
           sx={{
-            flexGrow: 1,
             display: "flex",
-            flexDirection: "column",
-            justifyContent: "flex-start",
-            rowGap: 4,
-            padding: 3,
+            flexGrow: 1,
+            flexDirection: { xs: "column", lg: "row" },
           }}
         >
-          <GameArea
+          <Player
             isLoading={isLoading}
-            gameType={gameType}
-            handleSetGame={handleSetGame}
-            startGame={startGame}
-            resetGame={resetGame}
-            resetPlayersData={resetPlayersData}
-            isDraw={winner === "draw"}
+            type="red"
+            playerData={playerOne}
+            isWinner={winner === "playerOne"}
+            scores={scores.playerOne}
+          />
+          <Box
+            sx={{
+              flexGrow: { md: "unset", lg: 1 },
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "flex-start",
+              rowGap: 4,
+              padding: 3,
+            }}
+          >
+            <GameArea
+              isLoading={isLoading}
+              gameType={gameType}
+              handleSetGame={handleSetGame}
+              startGame={startGame}
+              resetGame={resetGame}
+              resetPlayersData={resetPlayersData}
+              isDraw={winner === "draw"}
+            />
+          </Box>
+          <Player
+            isLoading={isLoading}
+            type="blue"
+            playerData={playerTwo}
+            isWinner={winner === "playerTwo"}
+            scores={scores.playerTwo}
           />
         </Box>
-        <Player
-          isLoading={isLoading}
-          type="blue"
-          playerData={playerTwo}
-          isWinner={winner === "playerTwo"}
-          scores={scores.playerTwo}
-        />
-      </Box>
+      )}
     </Box>
   );
 };

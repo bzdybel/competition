@@ -25,9 +25,8 @@ export const usePlayersData = (gameType: GameType): UsePlayersDataType => {
     try {
       if (gameType === "people") {
         return await fetchPerson(id);
-      } else {
-        return await fetchStarship(id);
       }
+      return await fetchStarship(id);
     } catch (error) {
       console.error(`Error fetching data for ID: ${id}.`, error);
 

@@ -21,37 +21,15 @@ export const Toggle = ({ gameType, disabled, handleChange }: ToggleProps) => {
       exclusive
       onChange={handleChange}
       aria-label="Game Type"
+      color="error"
       sx={styles.toggleButtonGroup}
       disabled={disabled}
     >
-      <ToggleButton
-        value="people"
-        sx={{
-          backgroundColor: gameType === "people" ? "#f0f0f0" : "transparent",
-          color: gameType === "people" ? "#333" : "#bbb",
-          "&:hover": {
-            backgroundColor: "#e0e0e0",
-          },
-        }}
-      >
-        People
-      </ToggleButton>
-      <ToggleButton
-        value="starships"
-        sx={{
-          backgroundColor: gameType === "starships" ? "#f0f0f0" : "transparent",
-          color: gameType === "starships" ? "#333" : "#bbb",
-          "&:hover": {
-            backgroundColor: "#e0e0e0",
-          },
-        }}
-      >
-        Starships
-      </ToggleButton>
+      <ToggleButton value="people">People</ToggleButton>
+      <ToggleButton value="starships">Starships</ToggleButton>
     </ToggleButtonGroup>
   );
 };
-// Style objects
 const styles = {
   toggleButtonGroup: {
     maxHeight: 80,

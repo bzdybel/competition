@@ -139,9 +139,9 @@ describe("usePlayersData Hook", () => {
       await result.current.getPlayersData();
     });
 
-    await waitFor(() => result.current.playerOne !== null);
+    await waitFor(() => expect(result.current.playerOne).not.toBeNull());
 
-    act(() => {
+    await act(async () => {
       result.current.resetPlayersData();
     });
 

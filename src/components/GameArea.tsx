@@ -84,6 +84,7 @@ const styles = {
   },
   button: {
     alignSelf: "center",
+    whiteSpace: "nowrap",
   },
   drawText: {
     fontWeight: "bold",
