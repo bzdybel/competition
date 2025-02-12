@@ -39,23 +39,10 @@ export const GameArea = ({
         gameType={gameType}
         handleChange={handleChange}
       />
-      <Box
-        sx={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          gap: 2,
-        }}
-      >
-        <Box
-          sx={{
-            display: "flex",
-            justifyContent: "center",
-            gap: 2,
-          }}
-        >
+      <Box sx={styles.container}>
+        <Box sx={styles.buttonContainer}>
           <Button
-            sx={{ alignSelf: "center" }}
+            sx={styles.button}
             variant="contained"
             color="success"
             onClick={startGame}
@@ -64,7 +51,7 @@ export const GameArea = ({
             Start the game
           </Button>
           <Button
-            sx={{ alignSelf: "center" }}
+            sx={styles.button}
             variant="contained"
             color="secondary"
             onClick={resetGame}
@@ -74,21 +61,35 @@ export const GameArea = ({
           </Button>
         </Box>
         {isDraw && (
-          <Typography
-            color="warning"
-            sx={{
-              fontWeight: "bold",
-              fontSize: "trem",
-              textTransform: "uppercase",
-              opacity: 0.8,
-              marginTop: 10,
-            }}
-            variant="h1"
-          >
+          <Typography color="warning" sx={styles.drawText} variant="h1">
             Draw
           </Typography>
         )}
       </Box>
     </>
   );
+};
+
+const styles = {
+  container: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    gap: 2,
+  },
+  buttonContainer: {
+    display: "flex",
+    justifyContent: "center",
+    gap: 2,
+  },
+  button: {
+    alignSelf: "center",
+  },
+  drawText: {
+    fontWeight: "bold",
+    fontSize: "trem",
+    textTransform: "uppercase",
+    opacity: 0.8,
+    marginTop: 10,
+  },
 };
