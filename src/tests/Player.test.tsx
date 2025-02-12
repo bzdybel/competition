@@ -71,7 +71,6 @@ describe("Player Component", () => {
       />
     );
 
-    // Check if name and mass are displayed correctly for a Person
     expect(screen.getByText("Luke Skywalker")).toBeInTheDocument();
     expect(screen.getByText("Mass: 77")).toBeInTheDocument();
   });
@@ -87,7 +86,6 @@ describe("Player Component", () => {
       />
     );
 
-    // Check if name and crew are displayed correctly for a Starship
     expect(screen.getByText("Millennium Falcon")).toBeInTheDocument();
     expect(screen.getByText("Crew: 4")).toBeInTheDocument();
   });
