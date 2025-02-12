@@ -79,10 +79,10 @@ The project is configured to support the following browsers:
 - **Development**:
   - The last version of Chrome, Firefox, and Safari
 
-## Development
+## Environment Variables
 
-To begin development, run:
+The project uses environment variables for configuration. To configure the base URL for API requests, create a `.env` file in the root of the project with the following content:
 
-```bash
-npm start
+```env
+REACT_APP_SWAPI_BASE_URL=https://swapi.dev/api
 ```
